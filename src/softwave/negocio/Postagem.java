@@ -1,23 +1,32 @@
 package softwave.negocio;
 
-import java.time.LocalTime;
-import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Postagem {
+	private int id;
 	private String titulo;
-	private String descricao;
 	private Usuario autor;
 	private boolean visibilidade;
 	private List<String> tags;
-	private LocalTime horario;
+	private LocalDate horario;
 	private String texto;
 
 	public Postagem(String titulo, String texto, Usuario autor) {
-		setTitulo(titulo);
-		setTexto(texto);
-		setAutor(autor);
+		this.titulo = titulo;
+		this.texto = texto;
+		this.autor = autor;
+		this.visibilidade = true;
+		this.horario = LocalDate.now();
 
+	}
+	
+	public Postagem(int id, String titulo, String texto, Usuario autor){
+		this.id = id;
+		this.titulo = titulo;
+		this.texto = texto;
+		this.autor = autor;
+		this.visibilidade = true;
 	}
 
 	public String getTexto() {
@@ -26,16 +35,6 @@ public class Postagem {
 
 	public void setTexto(String texto) {
 		this.texto = texto;
-	}
-
-	public Postagem(String titulo, String descricao, Usuario autor, List<String> palavrasChave) {
-		this.titulo = titulo;
-		this.descricao = descricao;
-		this.autor = autor;
-		this.visibilidade = true;
-		this.tags = new ArrayList<>();
-		this.tags = palavrasChave;
-		this.horario = LocalTime.now();
 	}
 
 	public void adicionarPalavrachave(String palavraChave) {
@@ -50,14 +49,6 @@ public class Postagem {
 		this.titulo = titulo;
 	}
 
-	public String getDescrição() {
-		return descricao;
-	}
-
-	public void setDescrição(String descrição) {
-		this.descricao = descrição;
-	}
-
 	public Usuario getAutor() {
 		return autor;
 	}
@@ -66,7 +57,7 @@ public class Postagem {
 		this.autor = autor;
 	}
 
-	public boolean isVisibilidade() {
+	public boolean getVisibilidade() {
 		return visibilidade;
 	}
 
@@ -78,12 +69,22 @@ public class Postagem {
 		return tags;
 	}
 
-	public LocalTime getHorario() {
+	public LocalDate getHorario() {
 		return this.horario;
 	}
 
 	public void addTag(String tag) {
 		tags.add(tag);
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
 
 }

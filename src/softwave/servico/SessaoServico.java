@@ -10,7 +10,7 @@ public class SessaoServico implements SessaoServicoInterface {
 	
 	@Override
 	public void iniciarSessao(Usuario usuario) {
-		Sessao.setPermissao(usuarioDao.pesquisarPermissao(usuario));
+		Sessao.setPermissao(usuarioDao.entrar(usuario.getProntuario(), usuario.getSenha()));
 	}
 
 	@Override

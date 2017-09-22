@@ -3,17 +3,17 @@ package softwave.negocio;
 //Classe que simula a conexão com o servidor
 
 public class Sessao {
-	private static int permissao;
+	private static Usuario usuario;
 	
-	public Sessao(int permissao){
-		this.permissao = permissao;
+	public Sessao(Usuario usuario){
+		this.usuario = usuario;
 	}
 	
 	public static int getPermissao(){
-		return permissao;
+		return usuario.getPermissao();
 	}
 	
-	public static void setPermissao(int permissaoStatic){
-		permissao = permissaoStatic;
+	public static void setPermissao(Usuario usuarioStatic){
+		usuario.setPermissao(usuarioStatic.getPermissao());
 	}
 }

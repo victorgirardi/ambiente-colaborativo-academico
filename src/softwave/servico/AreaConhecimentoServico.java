@@ -19,19 +19,25 @@ public class AreaConhecimentoServico implements AreaConhecimentoServicoInterface
 	@Override
 	public void criarPostagem(AreaConhecimento areaConhecimento, String titulo, String descricao, Usuario autor, List<String> palavrasChave) {
 		//TODO: Dados da postagem recebidos de uma classe view
-		Postagem postagem = new Postagem(titulo, descricao, autor, palavrasChave);
+		Postagem postagem = new Postagem(titulo, descricao, autor);
+		for(String tag: palavrasChave){
+			postagem.addTag(tag);
+		}
 		areaConhecimentoDao.adicionarPostagem(areaConhecimento, postagem);
 
 	}
 
 	@Override
-	public List<Postagem> pesquisarPostagemPorChave(String palavraChave) {
-		return areaConhecimentoDao.pesquisarPostagemPorChave(palavraChave);
+	public void addAreaConhecimento(String nome) {
+		AreaConhecimento areaConhecimento = new AreaConhecimento(nome);
+		areaConhecimentoDao.adicionarAreaConhecimento(areaConhecimento);
+		
 	}
 
 	@Override
-	public List<Postagem> pesquisarPostagemPorArea(AreaConhecimento areaConhecimento) {
-		return areaConhecimentoDao.pesquisarPostagemPorArea(areaConhecimento);
+	public AreaConhecimento pesquisarAreaConhecimento(String nome) {
+		AreaConhecimento areaConhecimento = areaConhecimentoDao.pesquisarAreaConhecimento(nome);
+		return areaConhecimento;
 	}
 
 }

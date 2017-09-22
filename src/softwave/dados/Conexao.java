@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class Conexao {
 
     private static final String DRIVER = "com.mysql.jdbc.Driver";
-    private static final String URL = "jdbc:mysql://localhost:3307/kamadas";
+    private static final String URL = "jdbc:mysql://localhost:3307/ambiente-colaborativo-academico";
     private static final String USER = "root";
     private static final String PASSWORD = "";
 

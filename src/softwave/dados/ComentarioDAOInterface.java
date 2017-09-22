@@ -6,4 +6,5 @@ import softwave.negocio.Usuario;
 public interface ComentarioDAOInterface {
 	public void alterarVisibilidade(Comentario comentario);
 	public void comentarComentario(Usuario usuario, String descricao, Comentario comentario);
+	public Comentario pesquisarComentario(String comentario);
 }

@@ -15,7 +15,7 @@ public class ComentarioServico implements ComentarioServicoInterface {
 	
 	@Override
 	public void alterarVisibilidade(Comentario comentario) {
-		if(Sessao.getPermissao() == 2 || Sessao.getPermissao() == 1){
+		if(Sessao.getPermissao() == 2){
 			comentarioDao.alterarVisibilidade(comentario);
 		} else {
 			//Permissao não concedida
@@ -26,6 +26,13 @@ public class ComentarioServico implements ComentarioServicoInterface {
 	@Override
 	public void comentarComentario(Usuario usuario, String descricao, Comentario comentario){ //comentario é o comentario mais no topo da hierarquia
 		comentarioDao.comentarComentario(usuario, descricao, comentario);
+	}
+
+	@Override
+	public Comentario pesquisarComentario(String comentario) {
+		Comentario comentarioRetorno;
+		comentarioRetorno = comentarioDao.pesquisarComentario(comentario);
+		return comentarioRetorno;
 	}
 
 }

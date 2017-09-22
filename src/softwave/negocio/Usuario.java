@@ -4,20 +4,16 @@ public class Usuario {
 	private String prontuario;
 	private int permissao;
 	private String nome;
-	private int turma;
 	private String senha;
-	
-	
-	
+
 	public Usuario() {
 		
 	}
 
-	public Usuario(String prontuario, int permissao, String nome, int turma){
+	public Usuario(String prontuario, int permissao, String nome){
 		this.prontuario = prontuario;
 		this.permissao = permissao;
 		this.nome = nome;
-		this.turma = turma;
 	}
 	
 	public String getProntuario() {
@@ -38,13 +34,7 @@ public class Usuario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public int getTurma() {
-		return turma;
-	}
-	public void setTurma(int turma) {
-		this.turma = turma;
-	}
-	
+
 	public String getSenha(){
 		 return senha;
 	}

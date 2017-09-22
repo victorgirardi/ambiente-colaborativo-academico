@@ -1,6 +1,9 @@
 package softwave.servico;
 
+import java.util.List;
+
 import softwave.dados.PostagemDAO;
+import softwave.negocio.AreaConhecimento;
 import softwave.negocio.Comentario;
 import softwave.negocio.Postagem;
 import softwave.negocio.Sessao;
@@ -21,12 +24,22 @@ public class PostagemServico implements PostagemServicoInterface {
 
 	@Override
 	public void alterarVisibilidadePostagem(Postagem postagem) {
-		if(Sessao.getPermissao() == 1 || Sessao.getPermissao() == 2){
+		if(Sessao.getPermissao() == 2){
 			postagemDao.alterarVisibilidadePostagem(postagem);
 		} else {
 			//Permissao não concedida
 		}
 
+	}
+	
+	@Override
+	public List<Postagem> pesquisarPostagemPorChave(String palavraChave) {
+		return postagemDao.pesquisarPostagemPorChave(palavraChave);
+	}
+
+	@Override
+	public List<Postagem> pesquisarPostagemPorArea(AreaConhecimento areaConhecimento) {
+		return postagemDao.pesquisarPostagemPorArea(areaConhecimento);
 	}
 
 }

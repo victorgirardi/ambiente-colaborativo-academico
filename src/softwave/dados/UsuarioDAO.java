@@ -4,26 +4,38 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import softwave.negocio.Sessao;
 import softwave.negocio.Usuario;
 
 public class UsuarioDAO extends DadosGenerico  implements UsuarioDAOInterface {
 
 	@Override
-	public Usuario entrar(int prontuario, String senha) {
-		// TODO Auto-generated method stub
-		return null;
+	public Usuario entrar(String prontuario, String senha) {
+		abrirConexao();
+		
+		String sql = "SELECT * FROM usuario WHERE prontuario = ? AND senha = ?;";
+		
+		try{
+			PreparedStatement stmt = preparaQuerry(sql);
+			stmt.setString(1, prontuario);
+			stmt.setString(2, senha);
+			ResultSet resultado = stmt.executeQuery();
+			Usuario usuario = new Usuario(resultado.getString("prontuario"), resultado.getInt("permissao"), resultado.getString("nome"));
+			Sessao.setPermissao(usuario);
+			
+			return usuario;
+		} catch (SQLException e){
+			//Senha ou prontuario errado
+			//Sem conexão
+			return null;
+		} finally {
+			fecharConexao();
+		}
 	}
 
-	@Override
-	public int pesquisarPermissao(Usuario usuario){
-		int permissao = 0;
-		
-		return permissao;
-	}
 
 	@Override
 	public Usuario pesquisaPorProntuario(String prontuario) {
-		Usuario usuario = new Usuario();
 		
 		abrirConexao();
 		String sql = "Select * from usuario where usuario.prontuario = ?;";
@@ -31,16 +43,17 @@ public class UsuarioDAO extends DadosGenerico  implements UsuarioDAOInterface {
 			PreparedStatement stmt = preparaQuerry(sql);
 			stmt.setString(1,prontuario);
 			ResultSet resultado = stmt.executeQuery();
-			usuario.setNome(resultado.getString("nome"));
-			usuario.setProntuario(prontuario);
-			usuario.setTurma(resultado.getInt("turma"));
-			
+			Usuario usuario = new Usuario(resultado.getString("prontuario"), resultado.getInt("senha"), resultado.getString("nome"));
+
+			return usuario;
 			
 		} catch (SQLException e) {
 			System.err.println(e);
+			return null;
+		}finally{
+			fecharConexao();
 		}
-		fecharConexao();
-		return usuario;
+
 	}
 
 }	

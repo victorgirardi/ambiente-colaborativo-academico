@@ -13,15 +13,16 @@ public class UsuarioServico implements UsuarioServicoInterface {
 	}
 	
 	@Override
-	public void entrar(int prontuario, String senha) {
+	public void entrar(String prontuario, String senha) {
 		if(usuarioDao.entrar(prontuario, senha) != null){
-			Sessao.setPermissao(this.pesquisarPermissao(usuarioDao.entrar(prontuario, senha)));
+			Sessao.setPermissao(usuarioDao.entrar(prontuario, senha));
 		}
 		
 	}
-
+	
 	@Override
-	public int pesquisarPermissao(Usuario usuario){
-		return usuarioDao.pesquisarPermissao(usuario);
+	public Usuario pesquisarPorProntuario(String prontuario){
+		Usuario usuario = usuarioDao.pesquisaPorProntuario(prontuario);
+		return usuario;
 	}
 }
