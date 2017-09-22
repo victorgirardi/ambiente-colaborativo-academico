@@ -1,23 +1,29 @@
 package softwave.negocio;
 
 public class Usuario {
-	private int prontuario;
+	private String prontuario;
 	private int permissao;
 	private String nome;
 	private int turma;
 	private String senha;
 	
-	public Usuario(int prontuario, int permissao, String nome, int turma){
+	
+	
+	public Usuario() {
+		
+	}
+
+	public Usuario(String prontuario, int permissao, String nome, int turma){
 		this.prontuario = prontuario;
 		this.permissao = permissao;
 		this.nome = nome;
 		this.turma = turma;
 	}
 	
-	public int getProntuario() {
+	public String getProntuario() {
 		return prontuario;
 	}
-	public void setProntuario(int prontuario) {
+	public void setProntuario(String prontuario) {
 		this.prontuario = prontuario;
 	}
 	public int getPermissao() {

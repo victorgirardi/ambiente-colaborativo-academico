@@ -3,7 +3,7 @@ package softwave.dados;
 import softwave.negocio.Comentario;
 import softwave.negocio.Postagem;
 
-public class PostagemDAO implements PostagemDAOInteface {
+public class PostagemDAO extends DadosGenerico  implements PostagemDAOInteface {
 
 	@Override
 	public void criarComentario(Postagem postagem, Comentario comentario) {
