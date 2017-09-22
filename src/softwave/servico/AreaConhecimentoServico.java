@@ -1,6 +1,7 @@
 package softwave.servico;
 
-import java.util.ArrayList;
+
+import java.util.List;
 
 import softwave.dados.AreaConhecimentoDAO;
 import softwave.negocio.AreaConhecimento;
@@ -16,20 +17,20 @@ public class AreaConhecimentoServico implements AreaConhecimentoServicoInterface
 	}
 	
 	@Override
-	public void criarPostagem(AreaConhecimento areaConhecimento, String titulo, String descricao, Usuario autor, ArrayList<String> palavrasChave) {
+	public void criarPostagem(AreaConhecimento areaConhecimento, String titulo, String descricao, Usuario autor, List<String> palavrasChave) {
 		//TODO: Dados da postagem recebidos de uma classe view
 		Postagem postagem = new Postagem(titulo, descricao, autor, palavrasChave);
-		areaConhecimentoDao.criarPostagem(areaConhecimento, postagem);
+		areaConhecimentoDao.adicionarPostagem(areaConhecimento, postagem);
 
 	}
 
 	@Override
-	public ArrayList<Postagem> pesquisarPostagemPorChave(String palavraChave) {
+	public List<Postagem> pesquisarPostagemPorChave(String palavraChave) {
 		return areaConhecimentoDao.pesquisarPostagemPorChave(palavraChave);
 	}
 
 	@Override
-	public ArrayList<Postagem> pesquisarPostagemPorArea(AreaConhecimento areaConhecimento) {
+	public List<Postagem> pesquisarPostagemPorArea(AreaConhecimento areaConhecimento) {
 		return areaConhecimentoDao.pesquisarPostagemPorArea(areaConhecimento);
 	}
 

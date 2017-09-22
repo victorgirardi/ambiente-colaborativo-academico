@@ -3,7 +3,7 @@ package softwave.dados;
 import softwave.negocio.Comentario;
 import softwave.negocio.Usuario;
 
-public class ComentarioDAO implements ComentarioDAOInterface {
+public class ComentarioDAO extends DadosGenerico  implements ComentarioDAOInterface {
 
 	@Override
 	public void alterarVisibilidade(Comentario comentario) {
